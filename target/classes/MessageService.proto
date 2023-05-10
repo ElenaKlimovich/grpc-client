@@ -1,0 +1,18 @@
+syntax = "proto3";
+package com.example.grpc;
+
+message GreetMessageRequest {
+
+  string userName = 1;
+  string userSurname = 2;
+  repeated string pets = 3;
+}
+
+message GreetMessageResponse {
+  string replyMessage = 1;
+}
+
+service GreetMessageService {
+  rpc formGreetMessage(GreetMessageRequest) returns (GreetMessageResponse);
+  rpc formMassGreetMessage(GreetMessageRequest) returns (stream GreetMessageResponse);
+}
